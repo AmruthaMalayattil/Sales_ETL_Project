@@ -1,0 +1,28 @@
+# Terraform
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*.tfvars
+terraform/.terraformrc
+terraform/terraform.rc
+terraform/.terraform.lock.hcl
+
+# scripts
+scripts/__pycache__/
+scripts/*.py[cod]
+scripts/.venv/
+scripts/env/
+scripts/metastore_db/
+scripts/derby.log
+scripts/data/iceberg_warehouse/
+scripts/.idea/
+
+# Data
+data/refined_sales.parquet/
+spark-warehouse/
+*.log
+
+# Secrets (Add your specific secret file names here)
+.env
+
+checkpoints/
