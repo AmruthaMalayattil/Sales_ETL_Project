@@ -1,28 +1,39 @@
-🚀 AWS Data Lakehouse: Kafka, Spark, & Iceberg
+# 🚀 AWS Data Lakehouse: Kafka, Spark, & Iceberg
+
+## 📌 Overview
+This project implements a real-time **Data Lakehouse** architecture on AWS. It ingests sales events from **Confluent Kafka**, processes them via **AWS Glue (Spark Streaming)**, and stores them in **Apache Iceberg** format on **Amazon S3** for ACID-compliant analytics via **Amazon Athena**.
+
+---
+
+## 🏗️ Architecture
+* **Ingestion:** Confluent Kafka (Real-time events)
+* **Processing:** AWS Glue / PySpark (Structured Streaming)
+* **Table Format:** Apache Iceberg (Time-travel & Atomic transactions)
+* **Infrastructure:** Terraform (IaC)
+* **Analysis:** Amazon Athena (SQL)
 
 
-📌 Overview
 
-This project implements a real-time Data Lakehouse architecture on AWS. It ingests sales events from Confluent Kafka, processes them via AWS Glue (Spark Streaming), and stores them in Apache Iceberg format on Amazon S3 for ACID-compliant analytics via Amazon Athena.
+---
 
-🏗️ Architecture
+## 🛠️ How to Run
 
-Ingestion: Confluent Kafka (Real-time events)
+1.  **Deploy Infrastructure**
+    ```bash
+    cd terraform && terraform apply
+    ```
 
-Processing: AWS Glue / PySpark (Structured Streaming)
+2.  **Start Producer**
+    Start the local producer to begin streaming events:
+    ```bash
+    python scripts/kafka_producer.py
+    ```
 
-Table Format: Apache Iceberg (Time-travel & Atomic transactions)
+3.  **Monitor Job**
+    Monitor the **Glue Streaming** job in the AWS Console.
 
-Infrastructure: Terraform (IaC)
-
-Analysis: Amazon Athena (SQL)
-
-🛠️ How to Run
-
-cd terraform && terraform apply
-
-Start the local producer: python scripts/kafka_producer.py
-
-Monitor the Glue Streaming job in AWS Console.
-
-Query data in Athena: SELECT * FROM sales_db.sales_iceberg;
+4.  **Query Data**
+    Run the following in **Amazon Athena**:
+    ```sql
+    SELECT * FROM sales_db.sales_iceberg;
+    ```
